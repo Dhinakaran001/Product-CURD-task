@@ -6,7 +6,7 @@ export const createProduct = createAsyncThunk(
   "products/createProduct",
   async (product, { rejectWithValue }) => {
     try {
-      const response = await axios.get(url, product);
+      const response = await axios.post(url, product);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error fetching product");
@@ -55,7 +55,7 @@ export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (productId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${url}/${productId}`);
+      const response = await axios.delete(`${url}/${productId}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error fetching product");
